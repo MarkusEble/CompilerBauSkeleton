@@ -27,7 +27,7 @@ public class CompileEnv implements CompileEnvIntf {
         m_functionTable = new FunctionTable();
         m_lexer = new Lexer();
         m_lexer.init(input);
-        m_parser = new Parser(this, m_lexer);
+        m_parser = new Parser(m_lexer, this.m_symbolTable);
         m_blockList = new ArrayList<InstrBlock>();
         loopStack = new Stack<InstrBlock>();
     }
@@ -48,7 +48,7 @@ public class CompileEnv implements CompileEnvIntf {
         m_entry = new InstrBlock("entry");
         m_blockList.add(m_entry);
         m_currentBlock = m_entry;
-        m_root = m_parser.getBlockStmt();
+        m_root = m_parser.getStmtList();
         m_root.codegen(this);
     }
 
