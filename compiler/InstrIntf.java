@@ -7,7 +7,7 @@ public abstract class InstrIntf {
 	/**
 	 * execute this instruction
 	 */
-	abstract public void execute(ExecutionEnvIntf env);
+	abstract public void execute(ExecutionEnvIntf env) throws Exception;
 	/**
 	 * trace this instruction
 	 */
